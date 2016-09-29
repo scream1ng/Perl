@@ -17,10 +17,8 @@ my $mainurl = 'http://www.eldon.com/';
 my $url = $ua->get($starturl);
 my $res = $url->content;
 
-#Check available url
 $i=0;
-
-#MAS0202015R5-en_AU-Wall_mounted_200x200x155
+#Check available url
 while ($res =~ m/(MAS\d+[^-]+)(\D+)(.*)(\.aspx)/ig){
 	my $link = $mainurl.$1.$2.$3.$4;
 	my $name = $1.'_'.$3;
