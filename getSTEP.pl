@@ -21,6 +21,15 @@ close FILE;
 =cut
 
 #<a href="/Templates/Commerce/Pages/ServeAsset.aspx?asset=3311280" target="_blank" class="event-productfile" data-eventlabel="MAS0202015R5">CAD drawing (STEP)</a>
-$res =~ /(ServeAsset\.aspx\?asset\=[^"]+)(.*)(CAD drawing \(STEP\))/i;
-$target = $mainurl.$1;
-print $target;
+$res =~ /(ServeAsset\.aspx\?asset\=[^"]+).*data\-eventlabel\=\"(.*)\"\>CAD drawing \(STEP\)/i;
+my $name = $2.'.STEP';
+my $target = $mainurl.'Templates/Commerce/Pages/'.$1;
+print "name => \"$name\"\n";
+print "target = > \"$target\"\n";
+
+print $name." => saving!!!";
+open FILE,">","$name";
+binmode FILE;
+print FILE $ua->get($target)->content;
+close FILE;
+print $name." => has been saved!!!";
