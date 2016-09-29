@@ -27,7 +27,7 @@ my $target = $mainurl.'Templates/Commerce/Pages/'.$1;
 print "name => \"$name\"\n";
 print "target = > \"$target\"\n";
 
-print $name." => saving!!!";
+print $name." => saving!!!\n";
 open FILE,">","$name";
 binmode FILE;
 print FILE $ua->get($target)->content;
