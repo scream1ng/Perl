@@ -20,7 +20,7 @@ print FILE $res;
 close FILE;
 =cut
 
-#<a href="/Templates/Commerce/Pages/ServeAsset.aspx?asset=3307561" target="_blank" class="event-productfile" data-eventlabel="MAS0202015R5">Image (JPG 591 x 800 px)</a>
-$res =~ /(ServeAsset\.aspx\?asset\=[^"]+)/i;
+#<a href="/Templates/Commerce/Pages/ServeAsset.aspx?asset=3311280" target="_blank" class="event-productfile" data-eventlabel="MAS0202015R5">CAD drawing (STEP)</a>
+$res =~ /"(ServeAsset\.aspx\?asset\=[^"]+)".{1,80}CAD\sdrawing\s\(STEP\)/i;
 my $target = $mainurl.$1;
 print $target;
